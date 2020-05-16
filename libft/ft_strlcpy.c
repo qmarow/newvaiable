@@ -6,6 +6,8 @@ size_t		ft_strlcpy(char *dsr, const char *str, size_t size)
 	int sz;
 
 	i = -1;
+	if (!dsr || !str)
+		return (0);
 	if (size > 0)
 	{
 		while (size-- && *(str + ++i) != '\0')

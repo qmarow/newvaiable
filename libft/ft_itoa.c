@@ -24,14 +24,13 @@ char	*ft_itoa(int n)
 	num = ft_numlen(n);
 	f = 1;
 	str = (char*)malloc(sizeof(char) * (num + 1));
+	if (!str)
+		return (NULL);
 	*(str + num) = '\0';
+	if (n == 0)
+		*(str + --num) = '0';
 	if (n < 0)
 		f = -1;
-	if (n == 0)
-	{
-		*(str + --num) = '0';
-		return (str);
-	}
 	while (n)
 	{
 		*(str + --num) = '0' + (n % 10) * f;

@@ -33,7 +33,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	char	*str;
 	int	i;
 	int	start;
-	int end;
+	int	end;
 
 	i = -1;
 	start = 0;

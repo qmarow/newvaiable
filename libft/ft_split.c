@@ -75,12 +75,18 @@ char	**ft_split(char const *s, char c)
 
 	i = -1;
 	t = -1;
+	if (!s)
+		return (NULL);
 	count = ft_strl(s, c);
 	str = (char**)malloc(sizeof(char*) * (count + 1));
 	if (!str)
 		return (NULL);
 	*(str + count) = 0;
 	while(count--)
+	{
 		*(str + ++t) = (char*)malloc(sizeof(char) * (ft_strl_l(s, &i, c) + 1));
+		if (!str[t])
+			return (NULL);
+	}
 	return (ft_record(s, c, str, t + 1));
 }

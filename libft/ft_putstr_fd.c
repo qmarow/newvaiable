@@ -5,6 +5,8 @@ void	ft_putstr_fd(char *s, int fd)
 	int i;
 
 	i = -1;
+	if (!s)
+		return ;
 	while (*(s + ++i) != '\0')
 		ft_putchar_fd(*(s + i), fd);
 }
