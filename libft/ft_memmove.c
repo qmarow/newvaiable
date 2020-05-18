@@ -2,7 +2,7 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t		i;
+	size_t	i;
 	
 	i = -1;
 	if (!dest && !src)
