@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmarowak <qmarowak@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/19 10:04:40 by qmarowak          #+#    #+#             */
+/*   Updated: 2020/05/19 15:52:45 by qmarowak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_numlen(int n)
@@ -12,10 +24,10 @@ static int	ft_numlen(int n)
 		n /= 10;
 		++i;
 	}
-	return i;
+	return (i);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	int		num;
 	int		f;

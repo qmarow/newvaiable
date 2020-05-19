@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmarowak <qmarowak@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/19 16:54:02 by qmarowak          #+#    #+#             */
+/*   Updated: 2020/05/19 16:54:03 by qmarowak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t		ft_strlcpy(char *dsr, const char *str, size_t size)
@@ -14,6 +26,6 @@ size_t		ft_strlcpy(char *dsr, const char *str, size_t size)
 			*(dsr + i) = *(str + i);
 		*(dsr + i) = '\0';
 	}
-	sz = strlen(str);
+	sz = ft_strlen((char*)str);
 	return ((size_t)sz);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmarowak <qmarowak@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/19 10:07:00 by qmarowak          #+#    #+#             */
+/*   Updated: 2020/05/19 15:34:27 by qmarowak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int		ft_strncmp(const char *str1, const char *str2, size_t n)
@@ -16,5 +28,5 @@ int		ft_strncmp(const char *str1, const char *str2, size_t n)
 		}
 		++i;
 	}
-	return 0;
+	return (0);
 }

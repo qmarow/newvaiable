@@ -1,26 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmarowak <qmarowak@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/19 10:06:13 by qmarowak          #+#    #+#             */
+/*   Updated: 2020/05/19 15:54:21 by qmarowak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int	ft_strl_l(const char *s, int *i, char c)
-{
-	int a;
-
-	a = 0;
-	while (*(s + ++(*i)) != '\0')
-	{
-		if (*(s + (*i)) != c)
-		{
-			while (*(s + (*i)) != c && *(s + *i) != '\0')
-			{	
-				++a;
-				++(*i);
-			}
-			break;
-		}
-	}
-	return a;
-}
-
-static int	ft_strl(const char *s,char c)
+static int		ft_strl(const char *s, char c)
 {
 	int i;
 	int a;
@@ -29,52 +21,58 @@ static int	ft_strl(const char *s,char c)
 	a = 0;
 	while (*(s + ++i) != '\0')
 	{
-		if (*(s + i) != c && *(s + i) != '\0') 
+		if (*(s + i) != c && *(s + i) != '\0')
 		{
 			while (*(s + i) != c && *(s + i))
 				++i;
 			++a;
 			if (*(s + i) == '\0')
-				break;
+				break ;
 		}
 	}
-	return a;
+	return (a);
 }
 
-static char	**ft_record(const char *s, char c, char **str, int t)
+static void		ft_clear(char **str)
+{
+	int a;
+
+	a = 0;
+	while (str[a])
+		free(str[a]);
+	free(str);
+}
+
+static void		ft_record(char *s, char c, char **str, int count)
 {
 	int i;
 	int a;
-	int b;
+	int size;
 
 	i = 0;
-	a = 0;
-	b = -1;
-	while (t--)
+	a = -1;
+	while (++a < count)
 	{
+		size = 0;
 		while (*(s + i) == c)
 			++i;
-		if (*(s + i) != c )
+		while (*(s + i + size) && *(s + i + size) != c)
+			++size;
+		str[a] = ft_substr(s, i, size);
+		if (!str)
 		{
-			while (*(s + i) != c && *(s + i) != '\0')
-				str[a][++b] = *(s + i++);
-			str[a][++b] = '\0';
-			++a;
-			b = -1;
+			ft_clear(str);
+			return ;
 		}
+		i += size;
 	}
-	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
-	int	i;
-	int	count;
+	int		count;
 	char	**str;
-	int	t;
 
-	i = -1;
-	t = -1;
 	if (!s)
 		return (NULL);
 	count = ft_strl(s, c);
@@ -82,11 +80,6 @@ char	**ft_split(char const *s, char c)
 	if (!str)
 		return (NULL);
 	*(str + count) = 0;
-	while(count--)
-	{
-		*(str + ++t) = (char*)malloc(sizeof(char) * (ft_strl_l(s, &i, c) + 1));
-		if (!str[t])
-			return (NULL);
-	}
-	return (ft_record(s, c, str, t + 1));
+	ft_record((char*)s, c, str, count);
+	return (str);
 }
